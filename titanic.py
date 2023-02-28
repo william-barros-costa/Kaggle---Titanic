@@ -15,13 +15,24 @@ frame_train  = pd.read_csv(LOCATION_TRAIN)
 frame_test = pd.read_csv(LOCATION_TEST)
 
 frame_train.columns, frame_test.columns
-# %% Basic Data Analysis
+# %% Shape
 print("Shape frame_train", frame_train.shape)
 print("Shape frame_test", frame_test.shape)
 
-# %% Missing Data Analysis
-print("NaN count frame_train", frame_train.shape[0] - frame_train.count())
-print("NaN count frame_test", frame_test.shape[0] - frame_test.count())
+# %% Initial Information Train
+print("Train")
+frame_train.info()
 
-# %% Fill Empty values
-frame_train.fillna({"Cabin": "", "Age": -1})
+# %% Initial Information Test
+print("Test")
+frame_test.info()
+
+# %% Initial Description Train
+print("Train")
+frame_train.describe()
+
+# %% Initial Description Test
+print("Test")
+frame_test.describe()
+
+# TODO: Divide into numerical and categorical. Histograms for numerical, heatmap for categorical
