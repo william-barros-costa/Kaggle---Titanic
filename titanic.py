@@ -36,3 +36,8 @@ print("Test")
 frame_test.describe()
 
 # TODO: Divide into numerical and categorical. Histograms for numerical, heatmap for categorical
+# %% Divide into numerical and categorical.
+numerical_train = frame_train.select_dtypes(include=[np.number])
+categorical_train = frame_train.select_dtypes(exclude=[np.number])
+
+numerical_train.columns, categorical_train.columns
