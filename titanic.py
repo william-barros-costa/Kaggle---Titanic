@@ -2,6 +2,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # %% Constants
 LOCATION_TRAIN = r"C:\Users\William\Desktop\repository\kaggle_competitions\titanic\resources\train.csv"
@@ -37,7 +38,18 @@ frame_test.describe()
 
 # TODO: Divide into numerical and categorical. Histograms for numerical, heatmap for categorical
 # %% Divide into numerical and categorical.
-numerical_train = frame_train.select_dtypes(include=[np.number])
-categorical_train = frame_train.select_dtypes(exclude=[np.number])
+Y_train = frame_train["Survived"]
+X_train = frame_train.loc[:, frame_train.columns != "Survived"]
+X_numerical_train = frame_train.select_dtypes(include=[np.number])
+X_categorical_train = frame_train.select_dtypes(exclude=[np.number])
 
-numerical_train.columns, categorical_train.columns
+X_numerical_train.columns, X_categorical_train.columns, Y_train.name
+
+# %% See numerical distribution
+for column in X_numerical_train.columns:
+    X_numerical_train[column].hist()
+    plt.title(column)
+    plt.show()
+
+# %% See correlation between classes
+sns.heatmap(X_numerical_train.corr())
