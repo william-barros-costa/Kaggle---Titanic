@@ -53,3 +53,4 @@ for column in X_numerical_train.columns:
 
 # %% See correlation between classes
 sns.heatmap(X_numerical_train.corr())
+
